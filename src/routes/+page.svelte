@@ -1,7 +1,17 @@
-<h1 class="text-3xl font-bold">Donkey</h1>
+<script>
+	import { currentActivities, background } from './data';
+	import TopPart from './TopPart.svelte';
+	import InfoPart from './InfoPart.svelte';
+	import SampleProjects from './SampleProjects.svelte';
+	import Skills from './Skills.svelte';
+</script>
 
-<div class="flex flex-col gap-4">
-	<div class="bg-red-500">red</div>
-	<div class="bg-blue-500">blue</div>
-	<div class="bg-green-500">green</div>
-</div>
+<section
+	class="bg-gradient-to-b from-gray-100 to-gray-300 min-h-screen flex flex-col items-center justify-start p-8 space-y-12"
+>
+	<TopPart />
+	<InfoPart data={currentActivities} />
+	<InfoPart data={background} />
+	<SampleProjects />
+	<Skills />
+</section>

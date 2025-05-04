@@ -7,7 +7,7 @@
 		{data.title}
 	</div>
 	<div class="bg-white p-8 rounded-lg shadow-lg border border-gray-200">
-		<p class="text-lg text-gray-700 leading-relaxed">
+		<p class="text-lg text-gray-700 leading-relaxed whitespace-pre-line">
 			{data.text}
 		</p>
 	</div>

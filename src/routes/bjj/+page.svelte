@@ -73,7 +73,7 @@
 </script>
 
 <div
-	class="p-5 bg-gradient-to-b min-h-screen min-w-screen from-gray-100 to-gray-300 grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-6 gap-4 p-4"
+	class="p-5 bg-gradient-to-b min-h-screen min-w-screen from-gray-100 to-gray-300 grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-6 gap-4"
 >
 	{#each data as item}
 		<div class="bg-white rounded-lg shadow-md p-4 hover:shadow-lg transition-shadow">

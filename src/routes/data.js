@@ -1,9 +1,9 @@
 export const currentActivities = {
 	title: 'Current Activities',
-	text: 'I relocated to Nashville in March 2023 to join a rapidly growing logistics company focused on digitalizing business processes. As the third developer hired, I played a pivotal role in building and scaling critical systems, including price predictors, a warehouse management system, bidding platforms, automated reporting tools, label printing solutions, order tracking, and dashboards. My contributions were instrumental in transforming the IT department, which has since grown from a small team to nearly 20 employees, driving innovation and operational efficiency.'
+	text: 'Working very hard building out the APIs for a startup that will hopefully be client facing by the end of the year. Top secret stuff and hopefully it will be a success.\n\n I am also always looking for opportunities to help small businesses. Projects I am involved with are a community farmer app for some hippies in San Diego, an e-commerce/blog site for an author, IoT scanner thing for a restaurant in Nashville, and an immigrant community marketplace in Germany.'
 };
 
 export const background = {
 	title: 'Background',
-	text: 'In graduate school, I developed a strong foundation in statistics and econometrics through advanced coursework. This expertise led to roles as a Data Analyst and Data Scientist, where I honed my skills in analyzing and interpreting complex datasets. Over time, I shifted my focus to the entire data lifecycle, including data creation, transformation, visualization, and application. My ability to build predictive models when needed adds significant value to my approach, enabling data-driven decision-making across diverse projects.'
+	text: 'After too many years in higher education I gained a strong foundation in statistics. This led to my first job as a Data Scientist in Phoenix. Before LLMs, machine learning was a black art. I had a fulfilling job at a SaaS company. Unfortunately, that company lost many clients when interest rates went up and I was laid off.\n\n This was a great opportunity to go into something new. I joined a young logistics company in Nashville and helped automate a lot of their boring repetitive tasks, in house applications and pricing models. I became a full stack developer that has basic frontend skills.'
 };

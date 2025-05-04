@@ -15,4 +15,4 @@ RUN npm install -g serve
 
 RUN echo '{"rewrites": [{"source": "**", "destination": "/index.html"}]}' > serve.json
 
-CMD ["serve", "build", "-p", "5173", "-c", "../serve.json"]
+CMD ["serve", "build", "-p", "3000", "-c", "../serve.json"]

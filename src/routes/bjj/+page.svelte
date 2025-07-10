@@ -19,6 +19,12 @@
 			description: null
 		},
 		{
+			name: 'Osoto to Sasae',
+			position: 'standing',
+			youtube: 'https://www.youtube.com/shorts/oxPKRTVYVZQ',
+			description: null
+		},
+		{
 			name: 'Foot Sweep',
 			position: 'standing',
 			youtube: 'https://www.youtube.com/shorts/wAPI3OnN3-Q',

@@ -11,7 +11,11 @@ func ping(w http.ResponseWriter, r *http.Request) {
 }
 
 func (app *application) home(w http.ResponseWriter, r *http.Request) {
-	app.render(w, r, http.StatusOK, "home.html", nil)
+	data := templateData{
+		Projects:   content.Projects,
+		GithubIcon: content.GithubIconPath,
+	}
+	app.render(w, r, http.StatusOK, "home.html", data)
 }
 
 func (app *application) bjj(w http.ResponseWriter, r *http.Request) {

@@ -10,6 +10,8 @@ import (
 )
 
 type templateData struct {
+	Projects      []content.Project
+	GithubIcon    string
 	BJJTechniques []content.BJJTechnique
 }
 

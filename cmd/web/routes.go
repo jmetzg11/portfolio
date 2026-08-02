@@ -13,5 +13,6 @@ func (app *application) routes() http.Handler {
 	mux.HandleFunc("GET /ping", ping)
 
 	mux.HandleFunc("GET /{$}", app.home)
-	return mux
+	mux.HandleFunc("GET /bjj", app.bjj)
+	return app.recoverPanic(commonHeaders(mux))
 }

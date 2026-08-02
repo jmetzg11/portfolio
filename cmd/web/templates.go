@@ -5,8 +5,13 @@ import (
 	"io/fs"
 	"path/filepath"
 
+	"portfolio.jmetzg11/internal/content"
 	"portfolio.jmetzg11/ui"
 )
+
+type templateData struct {
+	BJJTechniques []content.BJJTechnique
+}
 
 func newTemplateCache() (map[string]*template.Template, error) {
 	cache := map[string]*template.Template{}

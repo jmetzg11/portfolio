@@ -14,6 +14,8 @@ type templateData struct {
 	GithubIcon    string
 	BJJTechniques []content.BJJTechnique
 	Certificates  []content.Certificate
+	Years         []content.YearOption
+	MapData       template.JS
 }
 
 func newTemplateCache() (map[string]*template.Template, error) {
@@ -28,7 +30,6 @@ func newTemplateCache() (map[string]*template.Template, error) {
 		name := filepath.Base(page)
 		patterns := []string{
 			"html/base.html",
-			"html/partials/*.html",
 			page,
 		}
 

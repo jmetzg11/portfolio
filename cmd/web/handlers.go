@@ -1,6 +1,8 @@
 package main
 
 import (
+	"encoding/json"
+	"html/template"
 	"net/http"
 
 	"portfolio.jmetzg11/internal/content"
@@ -23,6 +25,20 @@ func (app *application) bjj(w http.ResponseWriter, r *http.Request) {
 		BJJTechniques: content.BJJTechniques,
 	}
 	app.render(w, r, http.StatusOK, "bjj.html", data)
+}
+
+func (app *application) geography(w http.ResponseWriter, r *http.Request) {
+	encoded, err := json.Marshal(content.MarkersByYear)
+	if err != nil {
+		app.serverError(w, r, err)
+		return
+	}
+
+	data := templateData{
+		Years:   content.Years(),
+		MapData: template.JS(encoded),
+	}
+	app.render(w, r, http.StatusOK, "geography.html", data)
 }
 
 func (app *application) certificates(w http.ResponseWriter, r *http.Request) {

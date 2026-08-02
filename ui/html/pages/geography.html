@@ -1,0 +1,25 @@
+{{define "title"}}Geography{{end}}
+
+{{define "head"}}
+<link rel="stylesheet" href="/static/leaflet/leaflet.css" />
+{{end}}
+
+{{define "main"}}
+<h1>Geography</h1>
+
+<div id="year-picker">
+    <button type="button" data-year="all" class="is-selected">All</button>
+    {{range .Years}}
+    <button type="button" data-year="{{.Year}}" style="background-color: {{.Color}}">{{.Year}}</button>
+    {{end}}
+</div>
+
+<div id="map"></div>
+
+<script>
+    // Server-rendered: every year's markers, already grouped, sized and shaded.
+    const MAP_DATA = {{.MapData}};
+</script>
+<script src="/static/leaflet/leaflet.js" defer></script>
+<script src="/static/js/geography.js" defer></script>
+{{end}}

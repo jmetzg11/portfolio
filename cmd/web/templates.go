@@ -13,6 +13,7 @@ type templateData struct {
 	Projects      []content.Project
 	GithubIcon    string
 	BJJTechniques []content.BJJTechnique
+	Certificates  []content.Certificate
 }
 
 func newTemplateCache() (map[string]*template.Template, error) {

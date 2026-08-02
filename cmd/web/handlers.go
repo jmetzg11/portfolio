@@ -24,3 +24,10 @@ func (app *application) bjj(w http.ResponseWriter, r *http.Request) {
 	}
 	app.render(w, r, http.StatusOK, "bjj.html", data)
 }
+
+func (app *application) certificates(w http.ResponseWriter, r *http.Request) {
+	data := templateData{
+		Certificates: content.Certificates,
+	}
+	app.render(w, r, http.StatusOK, "certificates.html", data)
+}

@@ -1,0 +1,19 @@
+{{define "title"}}Certificates{{end}}
+
+{{define "head"}}
+<link rel="stylesheet" href="/static/css/certificates.css" />
+{{end}}
+
+{{define "main"}}
+<h1>Education &amp; Certificates</h1>
+<ul>
+    {{range .Certificates}}
+    <li>
+        <h2>{{.Name}}</h2>
+        <span>{{.Date}}</span>
+        <p>{{.Description}}</p>
+        <img src="{{.Image}}" alt="Certificate: {{.Name}}" loading="lazy">
+    </li>
+    {{end}}
+</ul>
+{{end}}

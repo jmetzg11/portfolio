@@ -1,0 +1,35 @@
+{{define "title"}}Geography{{end}}
+
+{{define "head"}}
+<link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+    crossorigin=""
+/>
+<link rel="stylesheet" href="/static/css/geography.css" />
+{{end}}
+
+{{define "main"}}
+<h1>Geography</h1>
+
+<div id="year-picker">
+    <button type="button" data-year="all" class="is-selected">All</button>
+    {{range .Years}}
+    <button type="button" data-year="{{.Year}}" style="background-color: {{.Color}}">{{.Year}}</button>
+    {{end}}
+</div>
+
+<div id="map"></div>
+
+<!-- Every year's markers, already grouped, sized and shaded. A non-JS script
+     type is a data block, not executable, so CSP's script-src ignores it. -->
+<script id="map-data" type="application/json">{{.MapData}}</script>
+<script
+    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+    crossorigin=""
+    defer
+></script>
+<script src="/static/js/geography.js" defer></script>
+{{end}}

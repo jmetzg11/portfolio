@@ -1,0 +1,41 @@
+header {
+	margin-bottom: 3rem;
+	text-align: center;
+}
+
+header img {
+	width: 160px;
+	height: 160px;
+	border-radius: 50%;
+	object-fit: cover;
+}
+
+header h1 {
+	margin: 1rem 0 0;
+}
+
+main li {
+	padding: 1.25rem 0;
+	border-top: 1px solid var(--color-border);
+}
+
+main li:last-child {
+	border-bottom: 1px solid var(--color-border);
+}
+
+main li a {
+	font-weight: 600;
+	text-decoration: none;
+}
+
+main li a:hover {
+	text-decoration: underline;
+}
+
+/* The GitHub mark on "View code". */
+main li svg {
+	width: 1em;
+	height: 1em;
+	vertical-align: -0.125em;
+	margin-right: 0.3em;
+}

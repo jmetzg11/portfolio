@@ -1,5 +1,9 @@
 {{define "title"}}BJJ{{end}}
 
+{{define "head"}}
+<link rel="stylesheet" href="/static/css/bjj.css" />
+{{end}}
+
 {{define "main"}}
 <h1>BJJ Reference</h1>
 <ul>
@@ -8,7 +12,9 @@
         <h2>{{.Name}}</h2>
         <p>{{.Position}}</p>
         {{if .YouTube}}
-            <a href="{{.YouTube}}" target="_blank" rel="noopener noreferrer">YouTube</a>
+            <a class="video" href="{{.YouTube}}" target="_blank" rel="noopener noreferrer">
+                <img src="{{.Thumbnail}}" alt="Video: {{.Name}}" loading="lazy">
+            </a>
         {{else}}
             <p>{{.Description}}</p>
         {{end}}

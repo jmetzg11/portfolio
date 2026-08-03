@@ -5,16 +5,18 @@
 	const worldBounds = L.latLngBounds(L.latLng(-90, -180), L.latLng(90, 180));
 
 	const map = L.map('map', {
-		center: [20, 0],
-		zoom: 2,
+		center: [0, 0],
+		zoom: 3,
+		minZoom: 2,
 		maxBounds: worldBounds,
 		maxBoundsViscosity: 0.8,
 	});
 
+	// Tiles wrap on purpose: pinning them to a single world leaves dead space
+	// either side of any container wider than the map.
 	L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 		attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
 		maxZoom: 18,
-		noWrap: true,
 	}).addTo(map);
 
 	// One group holding every marker, so switching years is a single clear.

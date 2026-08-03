@@ -1,0 +1,29 @@
+main {
+	max-width: 1100px;
+}
+
+main ul {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+	gap: 1.5rem;
+}
+
+main li {
+	display: flex;
+	flex-direction: column;
+	padding: 1rem;
+	border: 1px solid var(--color-border);
+	border-radius: 8px;
+}
+
+main li span {
+	color: var(--color-muted);
+	font-size: 0.85rem;
+}
+
+/* Pushed to the bottom so cards of differing text length still line up. */
+main li img {
+	margin-top: auto;
+	padding-top: 1rem;
+	border-radius: 4px;
+}

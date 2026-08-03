@@ -1,10 +1,40 @@
 package content
 
+import (
+	"net/url"
+	"path"
+)
+
 type BJJTechnique struct {
 	Name        string
 	Position    string
 	YouTube     string
 	Description string
+}
+
+// Thumbnail is the preview image for a technique's video, or "" if it has none.
+// hqdefault exists for every video including Shorts; maxresdefault often 404s.
+func (t BJJTechnique) Thumbnail() string {
+	id := videoID(t.YouTube)
+	if id == "" {
+		return ""
+	}
+	return "https://img.youtube.com/vi/" + id + "/hqdefault.jpg"
+}
+
+// videoID handles the two link shapes in the data: /watch?v=<id> and /shorts/<id>.
+func videoID(raw string) string {
+	u, err := url.Parse(raw)
+	if err != nil {
+		return ""
+	}
+	if id := u.Query().Get("v"); id != "" {
+		return id
+	}
+	if base := path.Base(u.Path); base != "." && base != "/" {
+		return base
+	}
+	return ""
 }
 
 var BJJTechniques = []BJJTechnique{

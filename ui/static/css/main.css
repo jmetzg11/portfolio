@@ -1,41 +1,79 @@
-/* phase 4 */
+:root {
+	--color-bg: #fff;
+	--color-text: #1a1a1a;
+	--color-muted: #5a6472;
+	--color-accent: #2e86ab;
+	--color-border: #e4e7ec;
 
-/* Geography. Leaflet needs an explicit height on its container or the map
-   collapses to nothing; the rest here is placeholder until the styling pass. */
-#map {
-	width: 100%;
-	height: 70vh;
-	min-height: 320px;
+	--font: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+	--measure: 65ch;
 }
 
-#year-picker {
-	display: flex;
-	flex-wrap: wrap;
-	gap: 2px;
-	margin: 0.75rem 0;
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
 }
 
-#year-picker button {
-	padding: 0.25rem 0.5rem;
-	border: 2px solid transparent;
-	border-radius: 4px;
-	color: #fff;
-	font: inherit;
-	font-size: 0.8rem;
-	cursor: pointer;
+body {
+	margin: 0;
+	padding: 2rem 1rem 4rem;
+	background: var(--color-bg);
+	color: var(--color-text);
+	font-family: var(--font);
+	font-size: 1.0625rem;
+	line-height: 1.6;
 }
 
-#year-picker button[data-year='all'] {
-	background-color: #64748b;
+/* Pages needing more room widen main in their own stylesheet. */
+main,
+.back {
+	max-width: var(--measure);
+	margin: 0 auto;
 }
 
-#year-picker button.is-selected {
-	border-color: #0f172a;
+.back {
+	display: block;
+	margin-bottom: 2rem;
+	color: var(--color-muted);
+	font-size: 0.9rem;
+	text-decoration: none;
 }
 
-.map-tooltip {
-	display: flex;
-	flex-direction: column;
-	gap: 2px;
-	line-height: 1.4;
+.back:hover {
+	color: var(--color-accent);
+}
+
+h1 {
+	margin: 0 0 1.5rem;
+	font-size: 2rem;
+	line-height: 1.2;
+	letter-spacing: -0.02em;
+}
+
+h2 {
+	margin: 0 0 0.25rem;
+	font-size: 1.15rem;
+	line-height: 1.3;
+}
+
+p {
+	margin: 0 0 0.5rem;
+	color: var(--color-muted);
+}
+
+a {
+	color: var(--color-accent);
+}
+
+img {
+	max-width: 100%;
+	height: auto;
+}
+
+/* Every page lists its content as ul > li; each styles the li itself. */
+main ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
 }

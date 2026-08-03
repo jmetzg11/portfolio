@@ -10,6 +10,9 @@ import (
 )
 
 type templateData struct {
+	// IsHome suppresses the back link. Defaulting to false means a new page
+	// gets the link without having to remember anything.
+	IsHome        bool
 	Projects      []content.Project
 	GithubIcon    string
 	BJJTechniques []content.BJJTechnique

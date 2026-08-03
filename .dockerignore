@@ -1,0 +1,10 @@
+.git
+.gitignore
+.air.toml
+.claude
+tmp
+assets
+tools
+README.md
+Dockerfile
+.dockerignore

@@ -14,6 +14,7 @@ func ping(w http.ResponseWriter, r *http.Request) {
 
 func (app *application) home(w http.ResponseWriter, r *http.Request) {
 	data := templateData{
+		IsHome:     true,
 		Projects:   content.Projects,
 		GithubIcon: content.GithubIconPath,
 	}

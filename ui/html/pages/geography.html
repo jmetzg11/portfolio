@@ -22,10 +22,9 @@
 
 <div id="map"></div>
 
-<script>
-    // Server-rendered: every year's markers, already grouped, sized and shaded.
-    const MAP_DATA = {{.MapData}};
-</script>
+<!-- Every year's markers, already grouped, sized and shaded. A non-JS script
+     type is a data block, not executable, so CSP's script-src ignores it. -->
+<script id="map-data" type="application/json">{{.MapData}}</script>
 <script
     src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
     integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="

@@ -2,6 +2,8 @@
 // in Go; MAP_DATA arrives keyed by "all" and by each year, so switching years is
 // just picking a different slice and redrawing.
 (function () {
+	const MAP_DATA = JSON.parse(document.getElementById('map-data').textContent);
+
 	const worldBounds = L.latLngBounds(L.latLng(-90, -180), L.latLng(90, 180));
 
 	const map = L.map('map', {

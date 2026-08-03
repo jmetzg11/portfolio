@@ -1,9 +1,0 @@
-root = "."
-tmp_dir = "tmp"
-
-[build]
-    cmd = "go build -o ./tmp/web ./cmd/web"
-    bin = "./tmp/web"
-    include_ext = ["go", "html", "css", "js"]
-    exclude_dir = ["tmp", "bin", "node_modules", "src", "static", ".git", ".svelte-kit", "build"]
-    delay = 1000

@@ -19,11 +19,9 @@ var Projects = []Project{
 		External:    true,
 	},
 	{
-		Name:        "ETF Investing",
-		URL:         "https://stocks-etf.fly.dev/",
-		Description: "An automated investment strategy that targets the globally 11 sectors of the economy",
-		CodeURL:     "https://github.com/jmetzg11/stocks-etf",
-		External:    true,
+		Name:        "Automated investing",
+		URL:         "/investing",
+		Description: "A passive way to invest",
 	},
 	{
 		Name:        "Farmsville",

@@ -13,6 +13,7 @@ func (app *application) routes() http.Handler {
 	mux.HandleFunc("GET /ping", ping)
 
 	mux.HandleFunc("GET /{$}", app.home)
+	mux.HandleFunc("GET /investing", app.investing)
 	mux.HandleFunc("GET /bjj", app.bjj)
 	mux.HandleFunc("GET /geography", app.geography)
 	mux.HandleFunc("GET /certificates", app.certificates)

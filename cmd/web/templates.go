@@ -6,6 +6,7 @@ import (
 	"path/filepath"
 
 	"portfolio.jmetzg11/internal/content"
+	"portfolio.jmetzg11/internal/stocks"
 	"portfolio.jmetzg11/ui"
 )
 
@@ -19,6 +20,8 @@ type templateData struct {
 	Certificates  []content.Certificate
 	Years         []content.YearOption
 	MapData       template.JS
+	Stocks        []stocks.DisplayStock
+	Crypto        []stocks.DisplayCoin
 }
 
 func newTemplateCache() (map[string]*template.Template, error) {

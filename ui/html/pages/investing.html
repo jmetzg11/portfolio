@@ -1,0 +1,45 @@
+{{define "title"}}Investing{{end}}
+
+{{define "main"}}
+<h1>Automated Investing</h1>
+
+<h2>Stocks</h2>
+<table>
+    <tr>
+        <th>Symbol</th>
+        <th>Market Value</th>
+        <th>Cost Basis</th>
+        <th>Unrealized %</th>
+        <th>Change Today</th>
+        <th>Reserve</th>
+    </tr>
+    {{range .Stocks}}
+    <tr>
+        <td>{{.Symbol}}</td>
+        <td>{{printf "%.2f" .MarketValue}}</td>
+        <td>{{printf "%.2f" .CostBasis}}</td>
+        <td>{{printf "%.4f" .UnrealizedPPC}}</td>
+        <td>{{printf "%.4f" .ChangeToday}}</td>
+        <td>{{printf "%.2f" .Reserve}}</td>
+    </tr>
+    {{end}}
+</table>
+
+<h2>Crypto</h2>
+<table>
+    <tr>
+        <th>Currency</th>
+        <th>Quantity</th>
+        <th>Dollar Amount</th>
+        <th>Reserve</th>
+    </tr>
+    {{range .Crypto}}
+    <tr>
+        <td>{{.Currency}}</td>
+        <td>{{printf "%.8f" .Qty}}</td>
+        <td>{{printf "%.2f" .DollarAmount}}</td>
+        <td>{{printf "%.2f" .Reserve}}</td>
+    </tr>
+    {{end}}
+</table>
+{{end}}

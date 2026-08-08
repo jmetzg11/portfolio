@@ -21,6 +21,22 @@ func (app *application) home(w http.ResponseWriter, r *http.Request) {
 	app.render(w, r, http.StatusOK, "home.html", data)
 }
 
+func (app *application) investing(w http.ResponseWriter, r *http.Request) {
+	summary, err := app.stocks.Summary()
+	if err != nil {
+		app.serverError(w, r, err)
+		return
+	}
+
+	display := summary.Display()
+
+	data := templateData{
+		Stocks: display.Stocks,
+		Crypto: display.Crypto,
+	}
+	app.render(w, r, http.StatusOK, "investing.html", data)
+}
+
 func (app *application) bjj(w http.ResponseWriter, r *http.Request) {
 	data := templateData{
 		BJJTechniques: content.BJJTechniques,

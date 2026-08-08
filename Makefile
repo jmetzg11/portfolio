@@ -2,7 +2,7 @@
 
 # Live-reloading dev server on http://localhost:4000
 run:
-	air
+	set -a; . ./.env; set +a; air
 
 # Kill a stray server still holding port 4000
 down:

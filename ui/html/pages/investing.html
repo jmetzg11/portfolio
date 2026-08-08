@@ -1,45 +1,230 @@
 {{define "title"}}Investing{{end}}
 
+{{define "head"}}
+<link rel="stylesheet" href="/static/css/investing.css" />
+{{end}}
+
 {{define "main"}}
 <h1>Automated Investing</h1>
+<p class="lede">
+    A bot buys the dip whenever one of a selected group of ETFs or crypto coins
+    drops in price over the past 24 hours.
+</p>
 
-<h2>Stocks</h2>
-<table>
-    <tr>
-        <th>Symbol</th>
-        <th>Market Value</th>
-        <th>Cost Basis</th>
-        <th>Unrealized %</th>
-        <th>Change Today</th>
-        <th>Reserve</th>
-    </tr>
-    {{range .Stocks}}
-    <tr>
-        <td>{{.Symbol}}</td>
-        <td>{{printf "%.2f" .MarketValue}}</td>
-        <td>{{printf "%.2f" .CostBasis}}</td>
-        <td>{{printf "%.4f" .UnrealizedPPC}}</td>
-        <td>{{printf "%.4f" .ChangeToday}}</td>
-        <td>{{printf "%.2f" .Reserve}}</td>
-    </tr>
-    {{end}}
-</table>
+<h2>How it works</h2>
+<ol class="steps">
+    <li>
+        <strong>Reserves.</strong>
+        Each ETF and coin holds its own cash reserve, topped up by a fixed
+        amount once a day.
+    </li>
+    <li>
+        <strong>Price change.</strong>
+        If the price went up, nothing happens and the reserve keeps growing. If
+        it went down, a proportion of the reserve is spent on a purchase.
+    </li>
+    <li>
+        <strong>Proportion of the reserve.</strong>
+        The further the price drops, the bigger that proportion.
+    </li>
+</ol>
 
-<h2>Crypto</h2>
-<table>
-    <tr>
-        <th>Currency</th>
-        <th>Quantity</th>
-        <th>Dollar Amount</th>
-        <th>Reserve</th>
-    </tr>
-    {{range .Crypto}}
-    <tr>
-        <td>{{.Currency}}</td>
-        <td>{{printf "%.8f" .Qty}}</td>
-        <td>{{printf "%.2f" .DollarAmount}}</td>
-        <td>{{printf "%.2f" .Reserve}}</td>
-    </tr>
-    {{end}}
-</table>
+<ul class="regimes">
+    <li>
+        <span class="regime-icon">&#128002;</span>
+        <p>
+            During a bull run the reserves keep growing, so even a small dip
+            triggers a large purchase. This avoids cash drag in a hot market.
+        </p>
+    </li>
+    <li>
+        <span class="regime-icon">&#128059;</span>
+        <p>
+            During a bear market the reserves are drawn down steadily, a slice
+            at a time. This avoids catching a falling knife in one go.
+        </p>
+    </li>
+</ul>
+
+<section>
+    <h2>ETFs</h2>
+    <p>
+        Eleven ETFs, one for each sector of the economy, so no single corner of
+        the market can dominate the portfolio.
+    </p>
+    <ul class="legend">
+        <li><span class="legend-icon">&#9881;&#65039;</span><span class="legend-sym">EXI</span><span class="legend-name">Industrials</span></li>
+        <li><span class="legend-icon">&#9889;</span><span class="legend-sym">IXC</span><span class="legend-name">Energy</span></li>
+        <li><span class="legend-icon">&#127973;</span><span class="legend-sym">IXJ</span><span class="legend-name">Healthcare</span></li>
+        <li><span class="legend-icon">&#127974;</span><span class="legend-sym">IXG</span><span class="legend-name">Financials</span></li>
+        <li><span class="legend-icon">&#128187;</span><span class="legend-sym">IXN</span><span class="legend-name">Technology</span></li>
+        <li><span class="legend-icon">&#128225;</span><span class="legend-sym">IXP</span><span class="legend-name">Communications</span></li>
+        <li><span class="legend-icon">&#128161;</span><span class="legend-sym">JXI</span><span class="legend-name">Utilities</span></li>
+        <li><span class="legend-icon">&#128722;</span><span class="legend-sym">KXI</span><span class="legend-name">Consumer Staples</span></li>
+        <li><span class="legend-icon">&#9935;&#65039;</span><span class="legend-sym">MXI</span><span class="legend-name">Materials</span></li>
+        <li><span class="legend-icon">&#127961;&#65039;</span><span class="legend-sym">REET</span><span class="legend-name">Real Estate</span></li>
+        <li><span class="legend-icon">&#128663;</span><span class="legend-sym">RXI</span><span class="legend-name">Consumer Discretionary</span></li>
+    </ul>
+
+    <p>
+        Every 0.25% of decline commits another 5% of the reserve. A drop past
+        4.74% &mdash; rare for a broad sector fund &mdash; spends the reserve
+        entirely.
+    </p>
+
+    <div class="example">
+        <span class="example-label">Example</span>
+        <p>
+            A fund's reserve is sitting at <strong>$12.40</strong> and it closes
+            the day down <strong>1.10%</strong>. That lands on the 1.25% rung,
+            so the bot commits <strong>25%</strong> of the reserve: a
+            <strong>$3.10</strong> buy, leaving <strong>$9.30</strong> in the
+            reserve.
+        </p>
+    </div>
+
+    <div class="ladder-head">
+        <span>Daily drop</span>
+        <span>Reserve spent</span>
+    </div>
+    <ul class="ladder">
+        <li><span class="drop">0.25%</span><span class="share">5%</span></li>
+        <li><span class="drop">0.50%</span><span class="share">10%</span></li>
+        <li><span class="drop">0.75%</span><span class="share">15%</span></li>
+        <li><span class="drop">1.00%</span><span class="share">20%</span></li>
+        <li><span class="drop">1.25%</span><span class="share">25%</span></li>
+        <li><span class="drop">1.50%</span><span class="share">30%</span></li>
+        <li><span class="drop">1.75%</span><span class="share">35%</span></li>
+        <li><span class="drop">2.00%</span><span class="share">40%</span></li>
+        <li><span class="drop">2.25%</span><span class="share">45%</span></li>
+        <li><span class="drop">2.50%</span><span class="share">50%</span></li>
+        <li><span class="drop">2.75%</span><span class="share">55%</span></li>
+        <li><span class="drop">3.00%</span><span class="share">60%</span></li>
+        <li><span class="drop">3.25%</span><span class="share">65%</span></li>
+        <li><span class="drop">3.50%</span><span class="share">70%</span></li>
+        <li><span class="drop">3.75%</span><span class="share">75%</span></li>
+        <li><span class="drop">4.00%</span><span class="share">80%</span></li>
+        <li><span class="drop">4.25%</span><span class="share">85%</span></li>
+        <li><span class="drop">4.50%</span><span class="share">90%</span></li>
+        <li><span class="drop">4.74%</span><span class="share">95%</span></li>
+        <li><span class="drop">over 4.74%</span><span class="share">100%</span></li>
+    </ul>
+
+    <h3>Live positions</h3>
+    <p class="note">
+        Dollar figures are normalized to avoid pity or envy
+    </p>
+    <div class="table-wrap">
+        <table>
+            <thead>
+                <tr>
+                    <th>Symbol</th>
+                    <th class="num">Market Value</th>
+                    <th class="num">Cost Basis</th>
+                    <th class="num">Unrealized</th>
+                    <th class="num">Today</th>
+                    <th class="num">Reserve</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{range .Stocks}}
+                <tr>
+                    <td class="sym" data-sym="{{.Symbol}}">{{.Symbol}}</td>
+                    <td class="num">${{printf "%.2f" .MarketValue}}</td>
+                    <td class="num">${{printf "%.2f" .CostBasis}}</td>
+                    <td class="num {{if lt .UnrealizedPPC 0.0}}down{{else}}up{{end}}">{{printf "%.2f" .UnrealizedPPC}}%</td>
+                    <td class="num {{if lt .ChangeToday 0.0}}down{{else}}up{{end}}">{{printf "%.2f" .ChangeToday}}%</td>
+                    <td class="num">${{printf "%.2f" .Reserve}}</td>
+                </tr>
+                {{end}}
+            </tbody>
+        </table>
+    </div>
+</section>
+
+<section>
+    <h2>Crypto</h2>
+    <p>
+        Four coins with enough liquidity and history to trade like assets rather
+        than lottery tickets &mdash; two as anchors, two for the swing.
+    </p>
+    <ul class="legend">
+        <li><span class="legend-icon">&#129689;</span><span class="legend-sym">BTC</span><span class="legend-name">Bitcoin</span></li>
+        <li><span class="legend-icon">&#128142;</span><span class="legend-sym">ETH</span><span class="legend-name">Ethereum</span></li>
+        <li><span class="legend-icon">&#9728;&#65039;</span><span class="legend-sym">SOL</span><span class="legend-name">Solana</span></li>
+        <li><span class="legend-icon">&#128167;</span><span class="legend-sym">XRP</span><span class="legend-name">XRP</span></li>
+        <li><span class="legend-icon">&#128181;</span><span class="legend-sym">USD</span><span class="legend-name">Uninvested cash</span></li>
+    </ul>
+
+    <p>
+        The same ramp stretched four times wider, because coins swing much
+        harder than an index fund. Here each 1% of decline commits 5% of the
+        reserve, and a 20% day &mdash; or worse &mdash; spends the whole thing.
+    </p>
+
+    <div class="example">
+        <span class="example-label">Example</span>
+        <p>
+            A coin's reserve is sitting at <strong>$8.00</strong> and it closes
+            the day down <strong>6.4%</strong>. That lands on the 7% rung, so
+            the bot commits <strong>35%</strong> of the reserve: a
+            <strong>$2.80</strong> buy, leaving <strong>$5.20</strong> in the
+            reserve.
+        </p>
+    </div>
+
+    <div class="ladder-head">
+        <span>Daily drop</span>
+        <span>Reserve spent</span>
+    </div>
+    <ul class="ladder">
+        <li><span class="drop">1%</span><span class="share">5%</span></li>
+        <li><span class="drop">2%</span><span class="share">10%</span></li>
+        <li><span class="drop">3%</span><span class="share">15%</span></li>
+        <li><span class="drop">4%</span><span class="share">20%</span></li>
+        <li><span class="drop">5%</span><span class="share">25%</span></li>
+        <li><span class="drop">6%</span><span class="share">30%</span></li>
+        <li><span class="drop">7%</span><span class="share">35%</span></li>
+        <li><span class="drop">8%</span><span class="share">40%</span></li>
+        <li><span class="drop">9%</span><span class="share">45%</span></li>
+        <li><span class="drop">10%</span><span class="share">50%</span></li>
+        <li><span class="drop">11%</span><span class="share">55%</span></li>
+        <li><span class="drop">12%</span><span class="share">60%</span></li>
+        <li><span class="drop">13%</span><span class="share">65%</span></li>
+        <li><span class="drop">14%</span><span class="share">70%</span></li>
+        <li><span class="drop">15%</span><span class="share">75%</span></li>
+        <li><span class="drop">16%</span><span class="share">80%</span></li>
+        <li><span class="drop">17%</span><span class="share">85%</span></li>
+        <li><span class="drop">18%</span><span class="share">90%</span></li>
+        <li><span class="drop">19%</span><span class="share">95%</span></li>
+        <li><span class="drop">20% or more</span><span class="share">100%</span></li>
+    </ul>
+
+    <h3>Live positions</h3>
+    <p class="note">
+        Dollar figures are normalized to avoid pity or envy
+    </p>
+    <div class="table-wrap">
+        <table>
+            <thead>
+                <tr>
+                    <th>Currency</th>
+                    <th class="num">Quantity</th>
+                    <th class="num">Value</th>
+                    <th class="num">Reserve</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{range .Crypto}}
+                <tr>
+                    <td class="sym" data-sym="{{.Currency}}">{{.Currency}}</td>
+                    <td class="num">{{printf "%.8f" .Qty}}</td>
+                    <td class="num">${{printf "%.2f" .DollarAmount}}</td>
+                    <td class="num">${{printf "%.2f" .Reserve}}</td>
+                </tr>
+                {{end}}
+            </tbody>
+        </table>
+    </div>
+</section>
 {{end}}

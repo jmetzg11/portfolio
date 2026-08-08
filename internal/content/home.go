@@ -29,6 +29,11 @@ var Projects = []Project{
 		Description: "A social network for farmers",
 		CodeURL:     "https://github.com/jmetzg11/farmsville",
 		External:    true,
+	}, 
+	{
+		Name:        "Geography",
+		URL:         "/geography",
+		Description: "A tracker to see all the places I have visited",
 	},
 	{
 		Name:        "Government Spending",
@@ -48,11 +53,6 @@ var Projects = []Project{
 		Name:        "BJJ Reference",
 		URL:         "/bjj",
 		Description: "A reference for my favorite techniques so I don't forget them",
-	},
-	{
-		Name:        "Geography",
-		URL:         "/geography",
-		Description: "A tracker to see all the places I have visited",
 	},
 	{
 		Name:        "Education & Certificates",

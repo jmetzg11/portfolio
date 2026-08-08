@@ -1,0 +1,298 @@
+main,
+.back {
+	max-width: 900px;
+}
+
+/* Prose stays at a readable measure even though main is wider for the tables. */
+p,
+.steps {
+	max-width: var(--measure);
+}
+
+.lede {
+	font-size: 1.15rem;
+	color: var(--color-text);
+}
+
+h2 {
+	margin: 2.5rem 0 0.5rem;
+	font-size: 1.3rem;
+}
+
+section > h2:first-child {
+	margin-top: 0;
+}
+
+h3 {
+	margin: 2rem 0 0.5rem;
+	font-size: 1rem;
+	color: var(--color-muted);
+}
+
+.steps {
+	margin: 0 0 1rem;
+	padding-left: 1.3rem;
+	color: var(--color-muted);
+}
+
+.steps li {
+	margin-bottom: 0.6rem;
+}
+
+.steps strong {
+	color: var(--color-text);
+}
+
+.note {
+	font-size: 0.85rem;
+}
+
+/* The two market regimes the ladder is built around, side by side. */
+.regimes {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+	gap: 1rem;
+	margin-top: 1.5rem;
+}
+
+.regimes li {
+	display: flex;
+	gap: 0.75rem;
+	padding: 0.9rem 1rem;
+	border: 1px solid var(--color-border);
+	border-radius: 8px;
+}
+
+.regime-icon {
+	font-size: 1.6rem;
+	line-height: 1.2;
+}
+
+.regimes p {
+	margin: 0;
+	font-size: 0.9rem;
+}
+
+/* What each ticker actually holds, keyed by the same emoji as the tables. */
+.legend {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+	gap: 0.35rem 1rem;
+	margin: 1rem 0 1.5rem;
+	font-size: 0.85rem;
+}
+
+.legend li {
+	display: flex;
+	align-items: baseline;
+	gap: 0.5rem;
+}
+
+.legend-icon {
+	flex: none;
+	width: 1.3em;
+}
+
+.legend-sym {
+	flex: none;
+	width: 2.9em;
+	font-weight: 600;
+	font-variant-numeric: tabular-nums;
+}
+
+.legend-name {
+	color: var(--color-muted);
+}
+
+/* Each asset class gets its own section: explanation, worked example,
+   proportion table, then the live positions it applies to. */
+section + section {
+	margin-top: 3rem;
+	padding-top: 1rem;
+	border-top: 1px solid var(--color-border);
+}
+
+.example {
+	max-width: var(--measure);
+	margin: 1.25rem 0 1.75rem;
+	padding: 0.75rem 1rem;
+	border-left: 3px solid var(--color-accent);
+	background: rgba(46, 134, 171, 0.05);
+	border-radius: 0 4px 4px 0;
+}
+
+.example-label {
+	display: block;
+	margin-bottom: 0.15rem;
+	font-size: 0.7rem;
+	font-weight: 600;
+	text-transform: uppercase;
+	letter-spacing: 0.06em;
+	color: var(--color-accent);
+}
+
+.example p {
+	margin: 0;
+	font-size: 0.95rem;
+}
+
+.example strong {
+	color: var(--color-text);
+	font-variant-numeric: tabular-nums;
+}
+
+/* --- Buy-size ladders ---------------------------------------------------- */
+
+.ladder-head {
+	display: flex;
+	justify-content: space-between;
+	max-width: 24rem;
+	padding: 0 0.6rem 0.35rem;
+	margin-bottom: 0.35rem;
+	border-bottom: 1px solid var(--color-border);
+	font-size: 0.7rem;
+	text-transform: uppercase;
+	letter-spacing: 0.06em;
+	color: var(--color-muted);
+}
+
+.ladder {
+	display: flex;
+	flex-direction: column;
+	gap: 2px;
+	max-width: 24rem;
+}
+
+/* Each row is filled from the left to the share of the reserve it spends, so
+   the block reads as a ramp. --share is set per row below. */
+.ladder li {
+	--share: 0%;
+	display: flex;
+	justify-content: space-between;
+	gap: 1rem;
+	padding: 0.3rem 0.6rem;
+	border-radius: 3px;
+	background: linear-gradient(
+		to right,
+		rgba(46, 134, 171, 0.16) var(--share),
+		rgba(46, 134, 171, 0.05) var(--share)
+	);
+	font-size: 0.9rem;
+	font-variant-numeric: tabular-nums;
+}
+
+.ladder .drop {
+	color: var(--color-muted);
+}
+
+.ladder .share {
+	font-weight: 600;
+}
+
+/* Both ladders climb 5% per rung and top out at 100% on the last row, so one
+   set of rules covers them. */
+.ladder li:nth-child(1) { --share: 5%; }
+.ladder li:nth-child(2) { --share: 10%; }
+.ladder li:nth-child(3) { --share: 15%; }
+.ladder li:nth-child(4) { --share: 20%; }
+.ladder li:nth-child(5) { --share: 25%; }
+.ladder li:nth-child(6) { --share: 30%; }
+.ladder li:nth-child(7) { --share: 35%; }
+.ladder li:nth-child(8) { --share: 40%; }
+.ladder li:nth-child(9) { --share: 45%; }
+.ladder li:nth-child(10) { --share: 50%; }
+.ladder li:nth-child(11) { --share: 55%; }
+.ladder li:nth-child(12) { --share: 60%; }
+.ladder li:nth-child(13) { --share: 65%; }
+.ladder li:nth-child(14) { --share: 70%; }
+.ladder li:nth-child(15) { --share: 75%; }
+.ladder li:nth-child(16) { --share: 80%; }
+.ladder li:nth-child(17) { --share: 85%; }
+.ladder li:nth-child(18) { --share: 90%; }
+.ladder li:nth-child(19) { --share: 95%; }
+.ladder li:last-child { --share: 100%; }
+
+/* --- Positions ----------------------------------------------------------- */
+
+.table-wrap {
+	overflow-x: auto;
+	margin-bottom: 1.5rem;
+}
+
+table {
+	width: 100%;
+	border-collapse: collapse;
+	font-size: 0.9rem;
+}
+
+th,
+td {
+	padding: 0.5rem 0.75rem;
+	border-bottom: 1px solid var(--color-border);
+	text-align: left;
+	white-space: nowrap;
+}
+
+th {
+	font-size: 0.7rem;
+	font-weight: 600;
+	text-transform: uppercase;
+	letter-spacing: 0.06em;
+	color: var(--color-muted);
+}
+
+.num {
+	text-align: right;
+	font-variant-numeric: tabular-nums;
+}
+
+.sym {
+	font-weight: 600;
+}
+
+/* Sector/coin emoji, matched off the ticker so the tables stay pure template
+   ranges with no per-symbol data threaded through Go. */
+.sym::before {
+	margin-right: 0.5rem;
+}
+
+.sym[data-sym='EXI']::before { content: '\2699\FE0F'; }
+.sym[data-sym='IXC']::before { content: '\26A1'; }
+.sym[data-sym='IXJ']::before { content: '\1F3E5'; }
+.sym[data-sym='IXG']::before { content: '\1F3E6'; }
+.sym[data-sym='IXN']::before { content: '\1F4BB'; }
+.sym[data-sym='IXP']::before { content: '\1F4E1'; }
+.sym[data-sym='JXI']::before { content: '\1F4A1'; }
+.sym[data-sym='KXI']::before { content: '\1F6D2'; }
+.sym[data-sym='MXI']::before { content: '\26CF\FE0F'; }
+.sym[data-sym='REET']::before { content: '\1F3D9\FE0F'; }
+.sym[data-sym='RXI']::before { content: '\1F697'; }
+
+.sym[data-sym='BTC']::before { content: '\1FA99'; }
+.sym[data-sym='ETH']::before { content: '\1F48E'; }
+.sym[data-sym='SOL']::before { content: '\2600\FE0F'; }
+.sym[data-sym='XRP']::before { content: '\1F4A7'; }
+.sym[data-sym='USD']::before { content: '\1F4B5'; }
+
+tbody tr:hover {
+	background: #f7f9fb;
+}
+
+.up {
+	color: #1a7f5a;
+}
+
+.down {
+	color: #c2413a;
+}
+
+@media (max-width: 600px) {
+	.lede {
+		font-size: 1.05rem;
+	}
+
+	th,
+	td {
+		padding: 0.45rem 0.5rem;
+	}
+}

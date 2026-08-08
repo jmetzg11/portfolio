@@ -32,11 +32,10 @@ var Projects = []Project{
 	},
 	{
 		Name:        "Farmsville",
-		URL:         "https://farmsville.fly.dev/",
-		Description: "A social network for farmers",
+		URL:         "/farmsville",
+		Description: "A site to help a community farm share its harvest",
 		CodeURL:     "https://github.com/jmetzg11/farmsville",
-		External:    true,
-	}, 
+	},
 	{
 		Name:        "Geography",
 		URL:         "/geography",

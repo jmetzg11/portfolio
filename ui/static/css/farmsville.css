@@ -1,0 +1,10 @@
+/* The screenshot is wider than the text measure, so main widens to fit it. */
+main {
+	max-width: 900px;
+}
+
+main img {
+	margin: 1.5rem 0;
+	border: 1px solid var(--color-border);
+	border-radius: 8px;
+}

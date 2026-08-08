@@ -58,6 +58,10 @@ func (app *application) geography(w http.ResponseWriter, r *http.Request) {
 	app.render(w, r, http.StatusOK, "geography.html", data)
 }
 
+func (app *application) farmsville(w http.ResponseWriter, r *http.Request) {
+	app.render(w, r, http.StatusOK, "farmsville.html", templateData{})
+}
+
 func (app *application) certificates(w http.ResponseWriter, r *http.Request) {
 	data := templateData{
 		Certificates: content.Certificates,

@@ -26,21 +26,30 @@ body {
 }
 
 /* Pages needing more room widen main in their own stylesheet. */
-main,
-.back {
+main {
 	max-width: var(--measure);
 	margin: 0 auto;
 }
 
-.back {
-	display: block;
-	margin-bottom: 2rem;
+/* Floated so the page's h1 flows beside it instead of under it. Every
+   non-home page opens with an h1, so this always lands on the title line. */
+.home-link {
+	float: right;
+	display: flex;
+	align-items: center;
+	gap: 0.4rem;
+	margin: 0.35rem 0 0 1.5rem;
 	color: var(--color-muted);
 	font-size: 0.9rem;
 	text-decoration: none;
 }
 
-.back:hover {
+.home-link img {
+	width: 1.5rem;
+	height: 1.5rem;
+}
+
+.home-link:hover {
 	color: var(--color-accent);
 }
 

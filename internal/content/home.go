@@ -19,6 +19,13 @@ var Projects = []Project{
 		External:    true,
 	},
 	{
+		Name:        "American Empire",
+		URL:         "https://american-empire.fly.dev",
+		Description: "A site documenting various international interventions",
+		CodeURL:     "https://github.com/jmetzg11/american-empire",
+		External:    true,
+	},
+	{
 		Name:        "Automated investing",
 		URL:         "/investing",
 		Description: "A passive way to invest",

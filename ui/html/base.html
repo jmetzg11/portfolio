@@ -10,8 +10,10 @@
         {{block "head" .}}{{end}}
     </head>
     <body>
-        {{if not .IsHome}}<a class="back" href="/">&larr; Home</a>{{end}}
-        <main>{{template "main" .}}</main>
+        <main>
+            {{if not .IsHome}}<a class="home-link" href="/"><img src="/static/img/donkey.png" alt="">Home</a>{{end}}
+            {{template "main" .}}
+        </main>
     </body>
 </html>
 {{end}}

@@ -89,7 +89,10 @@
 
 		const shownPoints = [];
 		for (const { marker, place } of markers.values()) {
-			if (category === 'all' || place.category === category) {
+			// Home survives every filter, and counts towards the bounds below, so
+			// each category can be read as a distance from the house.
+			const shown = category === 'all' || place.category === category || place.category === 'home';
+			if (shown) {
 				marker.addTo(layer);
 				shownPoints.push([place.lat, place.lng]);
 			}

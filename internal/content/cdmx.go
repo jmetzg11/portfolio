@@ -136,7 +136,7 @@ var CDMXBookings = []CDMXCategory{
 
 // Order here is the order of the filter buttons and of the list sections.
 var CDMXCategories = []CDMXCategory{
-	{Key: "home", Label: "Home base", LabelRU: "Дом", Icon: "🏠"},
+	{Key: "home", Label: "Home", LabelRU: "Дом", Icon: "🏠"},
 	{Key: "transport", Label: "Getting around", LabelRU: "Транспорт", Icon: "✈️"},
 	{Key: "parks", Label: "Parks & walks", LabelRU: "Парки и прогулки", Icon: "🌳"},
 	{Key: "cafes", Label: "Cafes", LabelRU: "Кофейни", Icon: "☕"},

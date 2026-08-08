@@ -25,9 +25,9 @@
 		return L.divIcon({
 			className: 'cdmx-pin-wrap',
 			html: `<span class="cdmx-pin${booking}">${p.icon}</span>`,
-			iconSize: [30, 30],
-			iconAnchor: [15, 15],
-			popupAnchor: [0, -16],
+			iconSize: [36, 36],
+			iconAnchor: [18, 18],
+			popupAnchor: [0, -19],
 		});
 	}
 

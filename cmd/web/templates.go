@@ -11,9 +11,9 @@ import (
 )
 
 type templateData struct {
-	// IsHome suppresses the back link. Defaulting to false means a new page
-	// gets the link without having to remember anything.
 	IsHome        bool
+	BackURL       string
+	BackLabel     string
 	Projects      []content.Project
 	GithubIcon    string
 	BJJTechniques []content.BJJTechnique
@@ -22,6 +22,39 @@ type templateData struct {
 	MapData       template.JS
 	Stocks        []stocks.DisplayStock
 	Crypto        []stocks.DisplayCoin
+	CDMXSections  []content.CDMXSection
+	CDMXToBook    []content.CDMXSection
+	CDMXDetail    content.CDMXDetail
+	CDMXPlace     content.CDMXPlace
+	CDMXText      content.CDMXStrings
+	Lang          string
+}
+
+func (d templateData) IsRU() bool {
+	return d.Lang == content.LangRU
+}
+
+// LangQuery rides along on every internal link, so the language survives a click
+// into a detail page and the click back out.
+func (d templateData) LangQuery() string {
+	if d.Lang == content.LangRU {
+		return "?lang=" + content.LangRU
+	}
+	return ""
+}
+
+func (d templateData) BackURLOrDefault() string {
+	if d.BackURL == "" {
+		return "/"
+	}
+	return d.BackURL
+}
+
+func (d templateData) BackLabelOrDefault() string {
+	if d.BackLabel == "" {
+		return "Home"
+	}
+	return d.BackLabel
 }
 
 func newTemplateCache() (map[string]*template.Template, error) {

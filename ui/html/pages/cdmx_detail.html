@@ -1,0 +1,31 @@
+{{define "title"}}{{.CDMXDetail.Title}}{{end}}
+
+{{define "head"}}
+<link rel="stylesheet" href="/static/css/cdmx.css" />
+{{end}}
+
+{{define "main"}}
+<div class="page-head">
+    <h1>{{.CDMXDetail.Title}}</h1>
+    <p class="lang-toggle">
+        <a href="/cdmx/{{.CDMXDetail.Slug}}" hreflang="en" title="English" {{if not .IsRU}}class="is-selected"{{end}}>🇺🇸</a>
+        <a href="/cdmx/{{.CDMXDetail.Slug}}?lang=ru" hreflang="ru" title="Русский" {{if .IsRU}}class="is-selected"{{end}}>🇷🇺</a>
+    </p>
+</div>
+
+{{with .CDMXPlace}}
+<p class="address">{{.Address}}</p>
+
+<p class="links">
+    <a href="{{.MapsURL}}" target="_blank" rel="noopener noreferrer">{{$.CDMXText.Maps}}</a>
+    <a href="{{.DirectionsURL}}" target="_blank" rel="noopener noreferrer">{{$.CDMXText.Directions}}</a>
+    {{if .URL}}<a href="{{.URL}}" target="_blank" rel="noopener noreferrer">{{$.CDMXText.Website}}</a>{{end}}
+</p>
+{{end}}
+
+<div class="detail-body">
+    {{range .CDMXDetail.Body}}
+    <p>{{.}}</p>
+    {{end}}
+</div>
+{{end}}

@@ -58,6 +58,53 @@ func (app *application) geography(w http.ResponseWriter, r *http.Request) {
 	app.render(w, r, http.StatusOK, "geography.html", data)
 }
 
+func (app *application) cdmx(w http.ResponseWriter, r *http.Request) {
+	lang := content.CDMXLang(r.URL.Query().Get("lang"))
+
+	encoded, err := json.Marshal(content.CDMXMarkers(lang))
+	if err != nil {
+		app.serverError(w, r, err)
+		return
+	}
+
+	data := templateData{
+		CDMXSections: content.CDMXSections(lang),
+		CDMXToBook:   content.CDMXToBook(lang),
+		CDMXText:     content.CDMXText(lang),
+		Lang:         lang,
+		MapData:      template.JS(encoded),
+	}
+	app.render(w, r, http.StatusOK, "cdmx.html", data)
+}
+
+func (app *application) cdmxDetail(w http.ResponseWriter, r *http.Request) {
+	slug := r.PathValue("slug")
+	lang := content.CDMXLang(r.URL.Query().Get("lang"))
+
+	detail, ok := content.CDMXDetailBySlug(slug, lang)
+	if !ok {
+		http.NotFound(w, r)
+		return
+	}
+
+	place, ok := content.CDMXPlaceBySlug(slug, lang)
+	if !ok {
+		http.NotFound(w, r)
+		return
+	}
+
+	data := templateData{
+		CDMXDetail: detail,
+		CDMXPlace:  place,
+		CDMXText:   content.CDMXText(lang),
+		Lang:       lang,
+		BackLabel:  "CDMX",
+	}
+	data.BackURL = "/cdmx" + data.LangQuery()
+
+	app.render(w, r, http.StatusOK, "cdmx_detail.html", data)
+}
+
 func (app *application) farmsville(w http.ResponseWriter, r *http.Request) {
 	app.render(w, r, http.StatusOK, "farmsville.html", templateData{})
 }

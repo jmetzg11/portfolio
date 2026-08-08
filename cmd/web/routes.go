@@ -18,5 +18,7 @@ func (app *application) routes() http.Handler {
 	mux.HandleFunc("GET /geography", app.geography)
 	mux.HandleFunc("GET /certificates", app.certificates)
 	mux.HandleFunc("GET /farmsville", app.farmsville)
+	mux.HandleFunc("GET /cdmx", app.cdmx)
+	mux.HandleFunc("GET /cdmx/{slug}", app.cdmxDetail)
 	return app.recoverPanic(commonHeaders(mux))
 }

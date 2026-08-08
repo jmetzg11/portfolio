@@ -1,0 +1,78 @@
+{{define "title"}}CDMX{{end}}
+
+{{define "head"}}
+<link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+    crossorigin=""
+/>
+<link rel="stylesheet" href="/static/css/cdmx.css" />
+{{end}}
+
+{{define "main"}}
+<div class="page-head">
+    <h1>{{.CDMXText.Heading}}</h1>
+    <p class="lang-toggle">
+        <a href="/cdmx" hreflang="en" title="English" {{if not .IsRU}}class="is-selected"{{end}}>🇺🇸</a>
+        <a href="/cdmx?lang=ru" hreflang="ru" title="Русский" {{if .IsRU}}class="is-selected"{{end}}>🇷🇺</a>
+    </p>
+</div>
+
+<p class="lede">{{.CDMXText.Lede}}</p>
+
+<section id="to-book">
+    <h2>{{.CDMXText.BookHeading}}</h2>
+    <p>{{.CDMXText.BookLede}}</p>
+    {{range .CDMXToBook}}
+    <div class="tier" style="border-left-color: {{.Color}}">
+        <h3>{{.Icon}} {{.Label}}</h3>
+        <ul>
+            {{range .Places}}
+            <li><a href="#place-{{.ID}}">{{.Name}}</a> <span>{{.Lead}}</span></li>
+            {{end}}
+        </ul>
+    </div>
+    {{end}}
+</section>
+
+<div id="category-picker">
+    <button type="button" data-category="all" class="is-selected">{{.CDMXText.All}}</button>
+    {{range .CDMXSections}}
+    <button type="button" data-category="{{.Key}}">{{.Icon}} {{.Label}}</button>
+    {{end}}
+</div>
+
+<div id="map"></div>
+
+{{range .CDMXSections}}
+<section class="category" data-category="{{.Key}}">
+    <h2><span class="icon">{{.Icon}}</span>{{.Label}}</h2>
+    <ul>
+        {{range .Places}}
+        <li id="place-{{.ID}}" data-id="{{.ID}}" {{if .Booking}}data-booking="{{.Booking}}"{{end}}>
+            <h3>{{.Name}}</h3>
+            {{if .Booking}}<p class="badge badge-{{.Booking}}">{{.BookingLabel $.Lang}}<span>{{.Lead}}</span></p>{{end}}
+            {{if .Note}}<p class="note">{{.Note}}</p>{{end}}
+            <p class="address">{{.Address}}</p>
+            <p class="links">
+                {{if .Slug}}<a class="detail" href="/cdmx/{{.Slug}}{{$.LangQuery}}">{{$.CDMXText.Details}}</a>{{end}}
+                <a href="{{.MapsURL}}" target="_blank" rel="noopener noreferrer">{{$.CDMXText.Maps}}</a>
+                <a href="{{.DirectionsURL}}" target="_blank" rel="noopener noreferrer">{{$.CDMXText.Directions}}</a>
+                {{if .URL}}<a href="{{.URL}}" target="_blank" rel="noopener noreferrer">{{$.CDMXText.Website}}</a>{{end}}
+            </p>
+        </li>
+        {{end}}
+    </ul>
+</section>
+{{end}}
+
+<script id="map-data" type="application/json">{{.MapData}}</script>
+<script
+    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+    crossorigin=""
+    defer
+></script>
+<script src="/static/js/cdmx.js" defer></script>
+{{end}}

@@ -11,7 +11,7 @@
     </head>
     <body>
         <main>
-            {{if not .IsHome}}<a class="home-link" href="/"><img src="/static/img/donkey.png" alt="">Home</a>{{end}}
+            {{if not .IsHome}}<a class="home-link" href="{{.BackURLOrDefault}}"><img src="/static/img/donkey.png" alt="">{{.BackLabelOrDefault}}</a>{{end}}
             {{template "main" .}}
         </main>
     </body>

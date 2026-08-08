@@ -31,6 +31,11 @@ var Projects = []Project{
 		Description: "A passive way to invest",
 	},
 	{
+		Name:        "CDMX",
+		URL:         "/cdmx",
+		Description: "A map and guide of what to do in Mexico City",
+	},
+	{
 		Name:        "Farmsville",
 		URL:         "/farmsville",
 		Description: "A site to help a community farm share its harvest",

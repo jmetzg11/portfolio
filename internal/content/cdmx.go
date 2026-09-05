@@ -365,6 +365,7 @@ var CDMXPlaces = []CDMXPlace{
 		Note:      "Hilltop city, UNESCO-listed, a fraction of Teotihuacan's traffic.",
 		NoteRU:    "Древний город на вершине холма, в списке ЮНЕСКО; посетителей несравнимо меньше, чем в Теотиуакане.",
 		URL:       "https://www.inah.gob.mx/zonas/zona-arqueologica-de-xochicalco",
+		Slug:      "xochicalco",
 		Lat:       18.8040439, Lng: -99.2947104,
 	},
 	{
@@ -374,6 +375,7 @@ var CDMXPlaces = []CDMXPlace{
 		Note:      "Temple cut into the rock face, above an old town worth the walk itself — chapels, market, ordinary Mexican life.",
 		NoteRU:    "Храм, вырубленный в скале, над старым городком, ради которого стоит остаться, — часовни, рынок, обычная мексиканская жизнь.",
 		URL:       "https://www.inah.gob.mx/zonas/135-zona-arqueologica-malinalco",
+		Slug:      "malinalco",
 		Lat:       18.9534825, Lng: -99.5032195,
 	},
 	{
@@ -383,6 +385,7 @@ var CDMXPlaces = []CDMXPlace{
 		Note:      "The Toltec capital and its stone warriors, north of the city.",
 		NoteRU:    "Столица тольтеков и её каменные воины, к северу от города.",
 		URL:       "https://www.inah.gob.mx/zonas/zona-arqueologica-y-museo-de-sitio-de-tula",
+		Slug:      "tula",
 		Lat:       20.0638169, Lng: -99.3411080,
 	},
 
@@ -636,6 +639,57 @@ var CDMXDetails = []CDMXDetail{
 			"За пределами Мехико, в штате Мехико — это поездка на целый день, а не на полдня.",
 			"Бронировать не обязательно, билеты продают на входе. Покупка заранее на портале INAH (boletos.inah.gob.mx) в основном экономит время в очереди, но иностранные карты там часто не проходят, так что рассчитывать на это не стоит.",
 			"TODO: как добираемся (экскурсия, автобус с Terminal Norte или водитель) и во сколько выезжаем.",
+		},
+	},
+	{
+		Slug:    "xochicalco",
+		Title:   "Xochicalco",
+		TitleRU: "Шочикалько",
+		Body: []string{
+			"A hilltop city in Morelos, southwest of Mexico City and nearer to Cuernavaca than to the house. UNESCO-listed, and it draws a fraction of Teotihuacan's traffic — which is the whole point of going.",
+			"Open every day, 9:00 to 18:00, with last entry at 17:00. Entry is $210 pesos, or $105 with Mexican residency.",
+			"TODO: how we're getting there. This isn't a bus-and-walk trip the way Teotihuacan is, so probably a driver or a rental car.",
+			"TODO: whether we stop in Cuernavaca on the way back rather than driving straight home.",
+		},
+		BodyRU: []string{
+			"Город на вершине холма в штате Морелос, к юго-западу от Мехико — до Куэрнаваки отсюда ближе, чем до дома. В списке ЮНЕСКО, а посетителей несравнимо меньше, чем в Теотиуакане, ради этого и едем.",
+			"Открыто ежедневно с 9:00 до 18:00, вход закрывается в 17:00. Билет — 210 песо, с видом на жительство в Мексике — 105.",
+			"TODO: как добираемся. Это не «автобус и пешком», как в Теотиуакан, так что скорее водитель или машина напрокат.",
+			"TODO: заезжаем ли на обратном пути в Куэрнаваку или едем сразу домой.",
+		},
+	},
+	{
+		Slug:    "malinalco",
+		Title:   "Malinalco",
+		TitleRU: "Малиналько",
+		Body: []string{
+			"About 99 km southwest of the city, in the State of Mexico. The temple is cut straight into the rock face, and the old town below is the other half of the trip — chapels, a market, ordinary Mexican life rather than a monument.",
+			"Open Tuesday to Sunday, 10:00 to 17:00, closed Mondays. Entry is $155 pesos, or $85 with Mexican residency.",
+			"TODO: the site sits above the town and is reached on foot. Find out how long the climb actually is before we commit everyone to it.",
+			"TODO: how we're getting there, and whether the town is worth staying for after the site.",
+		},
+		BodyRU: []string{
+			"Примерно 99 км к юго-западу от города, штат Мехико. Храм вырублен прямо в скале, а вторая половина поездки — сам старый городок внизу: часовни, рынок, обычная мексиканская жизнь, а не памятник.",
+			"Открыто со вторника по воскресенье, с 10:00 до 17:00, по понедельникам закрыто. Билет — 155 песо, с видом на жительство в Мексике — 85.",
+			"TODO: площадка стоит над городком, подниматься нужно пешком. Выяснить, насколько долгий это подъём, прежде чем звать туда всех.",
+			"TODO: как добираемся и стоит ли остаться в городке после осмотра.",
+		},
+	},
+	{
+		Slug:    "tula",
+		Title:   "Tula",
+		TitleRU: "Тула",
+		Body: []string{
+			"The Toltec capital, north of the city in Hidalgo. The stone warriors standing on top of the pyramid are what people come for.",
+			"Open every day, 9:00 to 17:00, with last entry at 16:00. Entry is $210 pesos, or $105 with Mexican residency. There's a site museum here as well as the ruins.",
+			"TODO: how we're getting there.",
+			"TODO: whether this is instead of Teotihuacan or as well as it — two pyramid days in one trip may be one too many.",
+		},
+		BodyRU: []string{
+			"Столица тольтеков, к северу от города, штат Идальго. Едут сюда прежде всего ради каменных воинов, стоящих на вершине пирамиды.",
+			"Открыто ежедневно с 9:00 до 17:00, вход закрывается в 16:00. Билет — 210 песо, с видом на жительство в Мексике — 105. Кроме самих руин здесь есть музей.",
+			"TODO: как добираемся.",
+			"TODO: едем сюда вместо Теотиуакана или вдобавок к нему — два дня пирамид за одну поездку может оказаться перебором.",
 		},
 	},
 	{

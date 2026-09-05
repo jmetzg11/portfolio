@@ -6,7 +6,7 @@ import (
 )
 
 // csp whitelists the only external origins the site uses: unpkg for Leaflet,
-// OpenStreetMap and Carto for map tiles, and YouTube for the BJJ thumbnails.
+// Esri for map tiles, and YouTube for the BJJ thumbnails.
 // style-src allows inline because the geography year buttons carry a
 // style attribute; injected CSS is a far weaker attack than injected script,
 // which stays strict.

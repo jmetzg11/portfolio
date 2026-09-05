@@ -145,6 +145,7 @@ var CDMXCategories = []CDMXCategory{
 	{Key: "shopping", Label: "Shopping", LabelRU: "Шопинг", Icon: "🛍️"},
 	{Key: "books", Label: "Bookstores", LabelRU: "Книжные магазины", Icon: "📚"},
 	{Key: "sights", Label: "Main sights", LabelRU: "Главные достопримечательности", Icon: "🏛️"},
+	{Key: "daytrips", Label: "Day trips", LabelRU: "Поездки за город", Icon: "🗿"},
 	{Key: "entertainment", Label: "Entertainment", LabelRU: "Развлечения", Icon: "🎭"},
 }
 
@@ -206,6 +207,14 @@ var CDMXPlaces = []CDMXPlace{
 		Address: "Av. Tamaulipas 60, Condesa, 06140 Ciudad de México",
 		URL:     "https://blendstation.com.mx/",
 		Lat:     19.4099518, Lng: -99.1752665,
+	},
+	{
+		// MapsQuery skips the "(Melanie)" tag, which Google can't look up.
+		Category: "cafes", Name: "Panadería Rosetta (Melanie)",
+		Address:   "Av. Medellín 21, Roma Nte., Cuauhtémoc, 06700 Ciudad de México",
+		MapsQuery: "Panadería Rosetta, Av. Medellín 21, Roma Nte., Ciudad de México",
+		URL:       "https://rosetta.com.mx/",
+		Lat:       19.4215303, Lng: -99.1672094,
 	},
 
 	{
@@ -329,15 +338,52 @@ var CDMXPlaces = []CDMXPlace{
 		Lat:    19.3551412, Lng: -99.1623564,
 	},
 	{
-		Category: "sights", Name: "Teotihuacan Pyramids", NameRU: "Пирамиды Теотиуакана",
+		// The friend-credit suffixes need a MapsQuery: Google can't look up
+		// "Cuicuilco (Helen)".
+		Category: "sights", Name: "Cuicuilco (Helen)",
+		MapsQuery: "Zona Arqueológica de Cuicuilco, Ciudad de México",
+		Address:   "Zona Arqueológica de Cuicuilco, Tlalpan, Ciudad de México",
+		Note:      "Round pyramid, inside the city and almost never crowded.",
+		NoteRU:    "Круглая пирамида — в черте города, и почти никогда нет толп.",
+		URL:       "https://www.inah.gob.mx/zonas/zona-arqueologica-cuicuilco",
+		Lat:       19.3009293, Lng: -99.1826980,
+	},
+
+	{
+		Category: "daytrips", Name: "Teotihuacan Pyramids", NameRU: "Пирамиды Теотиуакана",
 		Address: "San Juan Teotihuacán, State of Mexico",
-		Note:    "Outside the city — a day trip.",
-		NoteRU:  "За городом — поездка на целый день.",
 		URL:     "https://www.teotihuacan.inah.gob.mx/",
 		Slug:    "teotihuacan",
 		Booking: "optional", Lead: "Walk-up works; buying ahead saves a long queue",
 		LeadRU: "Можно купить на месте; заранее — чтобы не стоять в длинной очереди",
 		Lat:    19.6923666, Lng: -98.8436073,
+	},
+	{
+		Category: "daytrips", Name: "Xochicalco (Helen)",
+		MapsQuery: "Zona Arqueológica de Xochicalco, Morelos",
+		Address:   "Zona Arqueológica de Xochicalco, Temixco, Morelos",
+		Note:      "Hilltop city, UNESCO-listed, a fraction of Teotihuacan's traffic.",
+		NoteRU:    "Древний город на вершине холма, в списке ЮНЕСКО; посетителей несравнимо меньше, чем в Теотиуакане.",
+		URL:       "https://www.inah.gob.mx/zonas/zona-arqueologica-de-xochicalco",
+		Lat:       18.8040439, Lng: -99.2947104,
+	},
+	{
+		Category: "daytrips", Name: "Malinalco (Helen)",
+		MapsQuery: "Zona Arqueológica de Malinalco, Estado de México",
+		Address:   "Zona Arqueológica de Malinalco, Malinalco, Estado de México",
+		Note:      "Temple cut into the rock face, above an old town worth the walk itself — chapels, market, ordinary Mexican life.",
+		NoteRU:    "Храм, вырубленный в скале, над старым городком, ради которого стоит остаться, — часовни, рынок, обычная мексиканская жизнь.",
+		URL:       "https://www.inah.gob.mx/zonas/135-zona-arqueologica-malinalco",
+		Lat:       18.9534825, Lng: -99.5032195,
+	},
+	{
+		Category: "daytrips", Name: "Tula (Helen)",
+		MapsQuery: "Zona Arqueológica de Tula, Tula de Allende, Hidalgo",
+		Address:   "Zona Arqueológica de Tula, Tula de Allende, Hidalgo",
+		Note:      "The Toltec capital and its stone warriors, north of the city.",
+		NoteRU:    "Столица тольтеков и её каменные воины, к северу от города.",
+		URL:       "https://www.inah.gob.mx/zonas/zona-arqueologica-y-museo-de-sitio-de-tula",
+		Lat:       20.0638169, Lng: -99.3411080,
 	},
 
 	{

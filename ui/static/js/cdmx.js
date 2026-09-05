@@ -3,14 +3,20 @@
 
 	const map = L.map('map', { scrollWheelZoom: false });
 
-	// Carto Positron: same OSM data, far less ink than the standard style, so the
-	// pins read as the content rather than competing with the basemap. No key.
-	L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
-		attribution:
-			'&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
-		subdomains: 'abcd',
+	// Esri's grey canvas, keyless. Base and labels are separate layers here,
+	// unlike the world map on /geography which drops the labels: a city guide
+	// is unreadable without street names, and one city viewport is few enough
+	// tiles that the extra layer doesn't hurt. Tiles stop at 16, so deeper
+	// zooms upscale rather than 404.
+	const esri = 'https://server.arcgisonline.com/ArcGIS/rest/services/Canvas';
+	const esriOpts = {
+		attribution: 'Tiles &copy; <a href="https://www.esri.com/">Esri</a>',
 		maxZoom: 20,
-	}).addTo(map);
+		maxNativeZoom: 16,
+	};
+
+	L.tileLayer(esri + '/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}', esriOpts).addTo(map);
+	L.tileLayer(esri + '/World_Light_Gray_Reference/MapServer/tile/{z}/{y}/{x}', esriOpts).addTo(map);
 
 	const layer = L.layerGroup().addTo(map);
 	const markers = new Map();

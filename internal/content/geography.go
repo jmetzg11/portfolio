@@ -121,6 +121,8 @@ var Places = []Place{
 	{Year: 2019, Location: "Cedar City, Utah", Text: "Bicycle journey", Value: 1, Lat: 37.6775, Lng: -113.0619},
 	{Year: 2019, Location: "Dolores, Colorado", Text: "Bicycle journey", Value: 1, Lat: 37.4736, Lng: -108.5023},
 	{Year: 2019, Location: "Pueblo, Colorado", Text: "Bicycle journey", Value: 1, Lat: 38.2544, Lng: -104.6091},
+	{Year: 2019, Location: "Istanbul, Turkey", Text: "Extreme Covid Vacation", Value: 1, Lat: 41.0082, Lng: 28.9784},
+	{Year: 2019, Location: "Smolensk, Russia", Text: "Border crossing detention", Value: 1, Lat: 54.7903112, Lng: 32.0503663},
 	{Year: 2020, Location: "Moscow, Russia", Text: "Quarantine", Value: 11, Lat: 55.754119, Lng: 37.6113672},
 	{Year: 2020, Location: "Karelia, Russia", Text: "Holiday", Value: 1, Lat: 63.1728532, Lng: 32.2977844},
 	{Year: 2021, Location: "Moscow, Russia", Text: "Quarantine", Value: 8, Lat: 55.754119, Lng: 37.6113672},

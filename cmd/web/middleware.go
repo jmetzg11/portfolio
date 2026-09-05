@@ -13,7 +13,7 @@ import (
 const csp = "default-src 'self'; " +
 	"script-src 'self' https://unpkg.com; " +
 	"style-src 'self' 'unsafe-inline' https://unpkg.com; " +
-	"img-src 'self' https://unpkg.com https://*.tile.openstreetmap.org https://*.basemaps.cartocdn.com https://img.youtube.com; " +
+	"img-src 'self' https://unpkg.com https://server.arcgisonline.com https://img.youtube.com; " +
 	"frame-ancestors 'none'; " +
 	"base-uri 'self'"
 

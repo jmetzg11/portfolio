@@ -6,20 +6,43 @@
 
 	const worldBounds = L.latLngBounds(L.latLng(-90, -180), L.latLng(90, 180));
 
+	const dotBounds = L.latLngBounds((MAP_DATA.all || []).map((m) => [m.lat, m.lng]));
+
 	const map = L.map('map', {
 		center: [0, 0],
 		zoom: 3,
-		minZoom: 2,
 		maxBounds: worldBounds,
 		maxBoundsViscosity: 0.8,
 	});
 
+	// The dots span most of the globe, so a fixed zoom floor that keeps a desktop
+	// full of map leaves a phone unable to see them all. Float the floor to
+	// whatever fits them here, but never let it out past the old fixed 2.
+	// getBoundsZoom clamps to the current minZoom, hence the reset first.
+	function fitMinZoom() {
+		if (!dotBounds.isValid()) return;
+		map.setMinZoom(0);
+		map.setMinZoom(Math.min(2, map.getBoundsZoom(dotBounds, false, [40, 40])));
+	}
+
+	fitMinZoom();
+	map.on('resize', fitMinZoom);
+
 	// Tiles wrap on purpose: pinning them to a single world leaves dead space
 	// either side of any container wider than the map.
-	L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-		attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-		maxZoom: 18,
-	}).addTo(map);
+	// Esri's grey canvas over stock OSM: it stays flat grey at every zoom, where
+	// OSM turns green and busy once you're past country level. It's HTTP/1.1 off
+	// one host, so the browser only gets ~6 tiles in flight — worth keeping the
+	// tile count down. Tiles stop at 16, so deeper zooms upscale.
+	L.tileLayer(
+		'https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}',
+		{
+			attribution: 'Tiles &copy; <a href="https://www.esri.com/">Esri</a>',
+			maxZoom: 18,
+			maxNativeZoom: 16,
+			updateWhenZooming: false,
+		},
+	).addTo(map);
 
 	// One group holding every marker, so switching years is a single clear.
 	const layer = L.layerGroup().addTo(map);

@@ -77,6 +77,14 @@ func (app *application) cdmx(w http.ResponseWriter, r *http.Request) {
 	app.render(w, r, http.StatusOK, "cdmx.html", data)
 }
 
+func (app *application) purchases(w http.ResponseWriter, r *http.Request) {
+	data := templateData{
+		BackURL:   "/cdmx",
+		BackLabel: "CDMX",
+	}
+	app.render(w, r, http.StatusOK, "purchases.html", data)
+}
+
 func (app *application) cdmxDetail(w http.ResponseWriter, r *http.Request) {
 	slug := r.PathValue("slug")
 	lang := content.CDMXLang(r.URL.Query().Get("lang"))

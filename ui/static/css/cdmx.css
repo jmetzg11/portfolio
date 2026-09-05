@@ -135,6 +135,12 @@ section.category li h3 {
 	font-weight: 600;
 }
 
+/* The only .links that isn't inside a card, so it has to put back the spacing
+   .links drops. Matches section.category's gap above it. */
+.purchases-link {
+	margin-top: 2rem;
+}
+
 #to-book {
 	margin: 1.25rem 0;
 	padding: 1rem 1.25rem;
